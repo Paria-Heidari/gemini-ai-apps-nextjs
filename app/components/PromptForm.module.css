@@ -1,0 +1,70 @@
+/* app/_components/PromptForm.module.css */
+.form {
+  border-radius: 8px;
+  width: 70%;
+  box-shadow: 0 1px 4px rgba(228, 226, 174, 0.08);
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.textarea {
+  margin-block: 16px;
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  outline: none;
+  font: inherit;
+}
+
+.textarea:focus {
+  border-color: #fdfb93;
+  box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.button {
+  appearance: none;
+  border: 1px solid #e5e7eb;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.button:hover {
+  background: #bed9e6;
+  color: black;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: black;
+}
+
+.summaryCard {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  border-radius: 16px;
+  padding: 20px;
+  border-color: #fdfb93;
+  box-shadow: 0 0 0 2px rgba(188, 224, 234, 0.2);
+  white-space: pre-wrap;
+}
+.summary {
+  max-height: 500px;
+  overflow-y: auto;
+}
