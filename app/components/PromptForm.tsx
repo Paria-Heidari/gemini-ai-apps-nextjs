@@ -1,21 +1,20 @@
 "use client";
 import { FormEvent, useState } from "react";
-import styles from './PromptForm.module.css';
+import styles from "./PromptForm.module.css";
 
 const baseUrl = "http://localhost:3000";
 const promptInit = "Gemini vs ChatGPT";
 
 const PromptForm = () => {
-  const [loading, setLoding] = useState(false);
-  const [summary, setSummary] = useState<string|null>(null);
+  const [loading, setLoading] = useState(false);
+  const [summary, setSummary] = useState<string | null>(null);
   const [prompt, setPrompt] = useState<string>(promptInit);
-
 
   const generateText = async (event: FormEvent) => {
     event.preventDefault();
     setSummary(null);
+    setLoading(true);
 
-    setLoding(true);
     try {
       const response = await fetch(`${baseUrl}/api//generate-gemini-ai`, {
         method: "POST",
@@ -27,18 +26,17 @@ const PromptForm = () => {
 
       const data = await response.json();
 
-      if (!response.ok){
+      if (!response.ok) {
         console.error(data?.error);
-
-      }else {
+      } else {
         setSummary(data.summary);
       }
-
     } catch (error) {
       console.error("Error:", error);
       return null;
     }
-    setLoding(false);
+
+    setLoading(false);
   };
   return (
     <>
