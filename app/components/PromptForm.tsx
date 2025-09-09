@@ -2,8 +2,13 @@
 import { FormEvent, useState } from "react";
 import styles from "./PromptForm.module.css";
 
-const baseUrl = "http://localhost:3000";
 const promptInit = "Gemini vs ChatGPT";
+const BASE_URL = (process.env.NEXT_PUBLIC_BASE_URL ?? "").replace(/\/$/, "");
+
+export const apiUrl = (path: string) =>
+  path.startsWith("http")
+    ? path
+    : `${BASE_URL}${path.startsWith("/") ? "" : "/"}${path}`;
 
 const PromptForm = () => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +21,7 @@ const PromptForm = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${baseUrl}/api//generate-gemini-ai`, {
+      const response = await fetch(apiUrl("/api//generate-gemini-ai"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
