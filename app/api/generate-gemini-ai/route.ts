@@ -21,6 +21,7 @@ export async function POST(req: Request): Promise<Response> {
     const summary = result.text;
 
     return NextResponse.json({ summary });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.log(err);
     return NextResponse.json(
