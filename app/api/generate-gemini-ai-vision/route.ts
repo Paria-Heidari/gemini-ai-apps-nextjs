@@ -30,7 +30,6 @@ export async function POST(req: Request): Promise<Response> {
     const body = await req.json();
     const filePath = body?.filePath;
     const mimeType = body?.mimeType;
-
     const contents = fileToGenerate(filePath, mimeType);
     const genAI = new GoogleGenAI({ apiKey: GOOGLE_GENAI_API_KEY });
 
@@ -40,9 +39,9 @@ export async function POST(req: Request): Promise<Response> {
     });
 
     const summary = result.text;
-    console.log(summary);
 
     return NextResponse.json({ summary });
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error("Gemeni error", err.message);
